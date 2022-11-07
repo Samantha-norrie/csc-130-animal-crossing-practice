@@ -94,7 +94,8 @@ function getVillagerByName() {
             else {
                 document.getElementById("name-bubble-text").innerText = data.name["name-USen"];
                 document.getElementById("quote-bubble-text").innerText = `"${data.saying}"`;
-                document.getElementById("villager-image").setAttribute("src", data.image_uri);  
+                document.getElementById("villager-image").setAttribute("src", data.image_uri);
+                setVillagerEmotes(data.personality);  
             }
         }).fail(function() {
             searchUnsuccessful();
