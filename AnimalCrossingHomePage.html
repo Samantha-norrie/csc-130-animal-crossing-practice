@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Animal Crossing Villager Search</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="VillagerFinder.js"></script>
+        <link href="Styling.css" type="text/css" rel="stylesheet"/>
+        <link rel="icon" href="favicon.ico">
+    </head>
+    <body>
+        <div id="search-container">
+            <div id="search-input">
+                <input 
+                    type="text" 
+                    id="villager-name-input" 
+                    name="villager-name-input" 
+                    placeholder="Search for a particular villager"
+                />
+                <button onclick="getVillagerByName()">
+                    <h1>Search</h1>
+                </button>
+                <hr/>
+                <button onclick="getRandomVillager()">
+                    <h4>... or display a mystery villager!</h4>
+                </button>
+            </div>
+            <div id="image-name-quote">
+                <div id="villager-image-container">
+                    <img src="https://acnh.co/assets/img/nintendo-switch-acnh-reactions/Encouraging.png" id="villager-image" width="200px" height="200px"/>
+                </div>
+                <div class="info-bubble" id="name-bubble">
+                    <img id="villager-emote-1"/>
+                    <h3 id="name-bubble-text"></h3>
+                    <img id="villager-emote-2"/>
+                </div>
+                <div class="info-bubble" id="quote-bubble">
+                    <p id="quote-bubble-text"></p>
+                </div>
+            </div>
+        </div>
+        <p>!!</p>
+    </body>
+</html>

@@ -1,0 +1,130 @@
+body {
+    background-image: url(https://www.wallpapersun.com/wp-content/uploads/2022/01/Animal-Crossing-Wallpapersun-2.jpg);
+	background-attachment: fixed;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 10% 80% 10%;
+    color: #d87093;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button, input, label {
+    background-color: #d87093;
+    color: whitesmoke;
+    width: 15rem;
+    height: 5rem;
+    opacity: 0.9;
+    border-color: #d87093;
+    border: 2px;
+    border-radius: 25px;
+    margin: 2rem;
+}
+
+
+hr {
+    height: 0.2rem;
+    width: 12rem;
+    border: 2px;
+    border-radius: 25px;
+    background-color: cornsilk;
+    opacity: 0.3;
+}
+
+img {
+    border: 2px;
+    border-radius: 25px;
+    opacity: 0.8;
+    width: 15rem;
+    height: 15rem;
+}
+
+#villager-name-input {
+    height: 2rem;
+    color: #d87093;
+    background-color: whitesmoke;
+    margin-bottom: 0rem;
+}
+
+button:hover {
+    background-color: #d87200;
+    border-color: #d87200;
+    cursor: pointer;
+    opacity: 1;
+}
+
+::placeholder {
+    color: #d87093;
+    margin-left: 1.2rem;
+    padding-left: 2px;
+}
+
+
+#search-container {
+    grid-row: 2/ span 1;
+    grid-column: 2/ span 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#search-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.info-bubble {
+    background-color: cornsilk;
+    opacity: 0.9;
+    border-color: cornsilk;
+    border: 2px;
+    border-radius: 25px;
+    margin: 0.5rem;
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+
+}
+
+#image-name-quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#name-bubble {
+    height: 3rem;
+}
+
+#quote-bubble {
+    height: 6rem;
+    font-style: italic;
+}
+
+#villager-image-container {
+    border: 2px;
+    border-radius: 25px;
+}
+
+#quote-bubble-text, #name-bubble-text {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#villager-emote-1, #villager-emote-2 {
+    width: 3rem;
+    height: 3rem;;
+}
+
+@media screen and (max-width: 600px) {
+    #search-container {
+        flex-direction: column;
+    }
+}
