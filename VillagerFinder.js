@@ -1,3 +1,4 @@
+// This is my base URL for accessing the Animal Crossing API
 const BASE_URL = "https://acnhapi.com/v1/";
 
 const PERSONALITIES = {
@@ -48,32 +49,20 @@ const PERSONALITY_EMOTES = {
 
 // Gets villager by random ID
 function getRandomVillager() {
+
+    /* This line of code generates a random number. I use this random number to
+        get a 'random' villager as the api allows me to access villagers through
+        their number id.
+    */ 
     let random_villager_id = Math.floor(Math.random() * 300)+1;
     let url = BASE_URL + "villagers/" + random_villager_id;
     $.get(url, function(data){
-        console.log(data);
+        // console.log(data);
         document.getElementById("name-bubble-text").innerText = data.name["name-USen"];
         document.getElementById("quote-bubble-text").innerText = `"${data.saying}"`;
         document.getElementById("villager-image").setAttribute("src", data.image_uri);
         setVillagerEmotes(data.personality);
     });
-}
-
-// Formats villager name input
-function formatVillagerNameInput(name) {
-    if (name.length == 0) {
-        return null;
-    }
-
-    // Capitalize first letter if lower-case
-    if (name.charAt(0) > 97 && name.charAt(0) < 123) {
-        if (name.length == 1) {
-            name = name.charAt(0).toUpperCase();
-        } else {
-            name = name.charAt(0).toUpperCase() + name.slice(1);
-        }
-    }
-    return name.trim();
 }
 
 // Gets villager by name (internal file name)
@@ -88,7 +77,7 @@ function getVillagerByName() {
     let url = BASE_URL + "villagers/" + getInternalName(formattedName);
     console.log(url);
         $.get(url, function(data){
-            console.log(data);
+            // console.log(data);
             if (data.statusCode == 404) {
                 searchUnsuccessful();
             }
@@ -102,6 +91,30 @@ function getVillagerByName() {
             searchUnsuccessful();
         });
 
+}
+
+// Clears old info and displays content for unsuccessful search
+function searchUnsuccessful() {
+    document.getElementById("villager-image").setAttribute("src", "https://animalcrossingworld.com/wp-content/uploads/2020/06/animal-crossing-new-horizons-guide-reaction-icon-mistaken.png");
+    document.getElementById("name-bubble-text").innerText = "";
+    document.getElementById("quote-bubble-text").innerText = "Villager not found. Please try again.";
+}
+
+// Formats villager name input
+function formatVillagerNameInput(name) {
+    if (name.length == 0) {
+        return null;
+    }
+
+    // Capitalize first letter if lower-case 
+    if (name.charAt(0) > 97 && name.charAt(0) < 123) {
+        if (name.length == 1) {
+            name = name.charAt(0).toUpperCase();
+        } else {
+            name = name.charAt(0).toUpperCase() + name.slice(1);
+        }
+    }
+    return name.trim();
 }
 
 // Sets villager emotes around name based on villager's personality
@@ -133,17 +146,15 @@ function setVillagerEmotes(personality) {
     }
 }
 
-// Clears old info and displays content for unsuccessful search
-function searchUnsuccessful() {
-    document.getElementById("villager-image").setAttribute("src", "https://animalcrossingworld.com/wp-content/uploads/2020/06/animal-crossing-new-horizons-guide-reaction-icon-mistaken.png");
-    document.getElementById("name-bubble-text").innerText = "";
-    document.getElementById("quote-bubble-text").innerText = "Villager not found. Please try again.";
-}
-
-// Gets internal file name from villager name
+/* 
+    Gets internal file name from villager name.
+    I 'hard-coded' the names of villagers in here as I needed a way to convert
+    between the names that users input (ex. Cyrano) to how the villagers are named
+    in the api (ex. ant00). I would *not* recommend doing this in your project if you
+    as it can be quite time consuming :) 
+*/
 function getInternalName(name) {
 
-    // Put const in function due to length
     const VILLAGER_INTERNAL_NAMES = {
         "Cyrano": "ant00",
         "Antonio": "ant01",
