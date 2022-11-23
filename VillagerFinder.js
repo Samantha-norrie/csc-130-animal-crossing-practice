@@ -48,9 +48,10 @@ const PERSONALITY_EMOTES = {
 
 // Gets villager by random ID
 function getRandomVillager() {
-    let random_villager_id = Math.floor(Math.random() * 300);
+    let random_villager_id = Math.floor(Math.random() * 300)+1;
     let url = BASE_URL + "villagers/" + random_villager_id;
     $.get(url, function(data){
+        console.log(data);
         document.getElementById("name-bubble-text").innerText = data.name["name-USen"];
         document.getElementById("quote-bubble-text").innerText = `"${data.saying}"`;
         document.getElementById("villager-image").setAttribute("src", data.image_uri);
@@ -87,7 +88,7 @@ function getVillagerByName() {
     let url = BASE_URL + "villagers/" + getInternalName(formattedName);
     console.log(url);
         $.get(url, function(data){
-            console.log("data: "+ data);
+            console.log(data);
             if (data.statusCode == 404) {
                 searchUnsuccessful();
             }
